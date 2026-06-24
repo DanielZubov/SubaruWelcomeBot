@@ -17,7 +17,7 @@ RAP_STICKER = "CAACAgIAAxkBAAIfOGnzQbQUwDjfh9oxJLbUTUrLSaplAAI2AANGwaMOVzViA7uyU
 ROCK_STICKER = "CAACAgIAAxkBAAIfPGnzQp92O_r1N1m3gtFvu-x6s7FEAALNAAMVKwACbZaMyfgfXPY7BA"
 BORODA_STICKER = "CAACAgIAAxkBAAIgSWoEgor0_WPoj0VojxOjGCEBqcsMAAKDoAAC7NEpSOdudaC1LzbhOwQ"
 TEMA_STICKER = "CAACAgIAAxkBAAIjAmo7gqxy3xGFx4uVRyzwfB_eexGCAAKhowACFq_hSaGqvB-1dME3PAQ"
-DENIS_STICKER = "CAACAgIAAxkBAAIjBmo7u8p8wVUZokDzKX-vcH7qkqlmAAJShAACmd4RSwVSN5eCJuo-PAQ"
+DENIS_STICKER = "CAACAgIAAxkBAAIjCGo7v6qyNEb0AAGdvsOrEZf0IJPs-gACAqAAAl_k2Uk-BMXMO32hyzwE"
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
@@ -182,7 +182,7 @@ async def denya_handler(message: types.Message):
         match = re.search(r"(\S*(деня)\S*)", message.text, re.IGNORECASE)
         whole_word = match.group(1).strip('.,!?;:"') if match else "Деня"
         
-        await message.answer(text=f"<blockquote>{whole_word}</blockquote>\n<b>Здарова, заебал.</b>", parse_mode="HTML")
+        await message.answer(text=f"<blockquote>{whole_word}</blockquote>\n<b>Семья - это главное!</b>", parse_mode="HTML")
     except Exception as e:
         print(f"Ошибка в denya_handler: {e}")
 
