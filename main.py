@@ -125,8 +125,9 @@ async def approve_handler(message: types.Message):
 async def vpn_proxy_handler(message: types.Message):
     try:
         text = (
-            "Вот список актуальных прокси для ТГ: https://t.me/c/1694988575/1/173784\n\n"
-            "Так же можешь воспользоваться нашим партнерским ВПН @Leon_VPNbot 😎"
+            "Актуальных прокси нет, я заебался обходить блокировки РКН"
+            "Но ты можешь воспользоваться нашим партнерским ВПН @Leon_VPNbot 😎"
+            "или по ссылке https://lk.freeleon.ru/"
         )
         await message.reply(text, disable_web_page_preview=False)
     except Exception as e:
