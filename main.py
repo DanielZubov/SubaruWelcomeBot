@@ -179,7 +179,7 @@ async def tema_handler(message: types.Message):
 async def denya_handler(message: types.Message):
     try:
         await message.answer_sticker(DENIS_STICKER)
-        match = re.search(r"(\S*(деня)", message.text, re.IGNORECASE)
+        match = re.search(r"(\S*(деня)\S*)", message.text, re.IGNORECASE)
         whole_word = match.group(1).strip('.,!?;:"') if match else "Деня"
         
         await message.answer(text=f"<blockquote>{whole_word}</blockquote>\n<b>Здарова, заебал.</b>", parse_mode="HTML")
