@@ -169,7 +169,7 @@ async def tema_handler(message: types.Message):
         whole_word = match.group(1).strip('.,!?;:"') if match else "Чё нада?"
         await message.answer(text=f"<blockquote>{whole_word}</blockquote>\n<b>Чё нада?</b>", parse_mode="HTML")
     except Exception as e:
-        print(f"Ошибка в approve_handler: {e}")
+        print(f"Ошибка в tema_handler: {e}")
 
 async def main():
     print("Subaru Bot запущен и на бусте! 🚀")
