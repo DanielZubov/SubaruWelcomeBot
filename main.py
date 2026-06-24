@@ -17,6 +17,7 @@ RAP_STICKER = "CAACAgIAAxkBAAIfOGnzQbQUwDjfh9oxJLbUTUrLSaplAAI2AANGwaMOVzViA7uyU
 ROCK_STICKER = "CAACAgIAAxkBAAIfPGnzQp92O_r1N1m3gtFvu-x6s7FEAALNAAMVKwACbZaMyfgfXPY7BA"
 BORODA_STICKER = "CAACAgIAAxkBAAIgSWoEgor0_WPoj0VojxOjGCEBqcsMAAKDoAAC7NEpSOdudaC1LzbhOwQ"
 TEMA_STICKER = "CAACAgIAAxkBAAIjAmo7gqxy3xGFx4uVRyzwfB_eexGCAAKhowACFq_hSaGqvB-1dME3PAQ"
+DENIS_STICKER = "CAACAgIAAxkBAAIjBmo7u8p8wVUZokDzKX-vcH7qkqlmAAJShAACmd4RSwVSN5eCJuo-PAQ"
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
@@ -161,7 +162,7 @@ async def boroda_handler(message: types.Message):
     except Exception as e:
         print(f"Ошибка в boroda_handler: {e}")
 
-# 7. ХЕНДЛЕР НА "ТЁМА"
+# 8. ХЕНДЛЕР НА "ТЁМА"
 @dp.message(F.text.lower().regexp(r".*(тём[аеуылм]|темой).*"))
 async def tema_handler(message: types.Message):
     try:
@@ -172,6 +173,18 @@ async def tema_handler(message: types.Message):
         await message.answer(text=f"<blockquote>{whole_word}</blockquote>\n<b>Нормальный?</b>", parse_mode="HTML")
     except Exception as e:
         print(f"Ошибка в tema_handler: {e}")
+
+# 9. ХЕНДЛЕР НА "Деня"
+@dp.message(F.text.lower().regexp(r".*(деня).*"))
+async def denya_handler(message: types.Message):
+    try:
+        await message.answer_sticker(DENIS_STICKER)
+        match = re.search(r"(\S*(деня)", message.text, re.IGNORECASE)
+        whole_word = match.group(1).strip('.,!?;:"') if match else "Деня"
+        
+        await message.answer(text=f"<blockquote>{whole_word}</blockquote>\n<b>Здарова, заебал.</b>", parse_mode="HTML")
+    except Exception as e:
+        print(f"Ошибка в denya_handler: {e}")
 
 async def main():
     print("Subaru Bot запущен и на бусте! 🚀")
