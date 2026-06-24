@@ -160,15 +160,16 @@ async def boroda_handler(message: types.Message):
     except Exception as e:
         print(f"Ошибка в boroda_handler: {e}")
 
-# 7. ХЕНДЛЕР НА "ТЁМА" (Только отдельное слово)
-# Используем поиск по всей строке, а не строгое соответствие началу
-@dp.message(F.text.lower().regexp(r".*\bтёма\b.*"))
+# 7. ХЕНДЛЕР НА "ТЁМА"
+@dp.message(F.text.lower().regexp(r".*(тём[ауы]|тёмой).*"))
 async def tema_handler(message: types.Message):
     try:
-        await message.reply("Нормальный?")
         await message.answer_sticker(TEMA_STICKER)
+        match = re.search(r"(\S*(тём[ауы]|тёмой)", message.text, re.IGNORECASE)
+        whole_word = match.group(1).strip('.,!?;:"') if match else "Чё нада?"
+        await message.answer(text=f"<blockquote>{whole_word}</blockquote>\n<b>Чё нада?</b>", parse_mode="HTML")
     except Exception as e:
-        print(f"Ошибка в boroda_handler: {e}")
+        print(f"Ошибка в approve_handler: {e}")
 
 async def main():
     print("Subaru Bot запущен и на бусте! 🚀")
