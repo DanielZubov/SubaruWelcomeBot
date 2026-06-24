@@ -162,8 +162,8 @@ async def boroda_handler(message: types.Message):
 
 # 7. ХЕНДЛЕР НА "ТЁМА" (Только отдельное слово)
 # Используем поиск по всей строке, а не строгое соответствие началу
-@dp.message(F.text.lower().regexp(r".*\bТёма\b.*"))
-async def boroda_handler(message: types.Message):
+@dp.message(F.text.lower().regexp(r".*\bтёма\b.*"))
+async def tema_handler(message: types.Message):
     try:
         await message.reply("Нормальный?")
         await message.answer_sticker(TEMA_STICKER)
