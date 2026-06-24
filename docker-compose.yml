@@ -1,0 +1,10 @@
+services:
+  subaru_welcome_bot:
+    build: .
+    container_name: subaru_welcome_bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      # Прокидываем видеофайл из текущей папки хоста в папку /app/media внутри контейнера
+      - ./welcome_to_the_club.mp4:/app/media/welcome_to_the_club.mp4
