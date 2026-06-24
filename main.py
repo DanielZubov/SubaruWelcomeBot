@@ -162,13 +162,14 @@ async def boroda_handler(message: types.Message):
         print(f"Ошибка в boroda_handler: {e}")
 
 # 7. ХЕНДЛЕР НА "ТЁМА"
-@dp.message(F.text.lower().regexp(r".*(тём[ауы]|тёмой).*"))
+@dp.message(F.text.lower().regexp(r".*(тём[аеуылм]|темой).*"))
 async def tema_handler(message: types.Message):
     try:
         await message.answer_sticker(TEMA_STICKER)
-        match = re.search(r"(\S*(тём[ауы]|тёмой)", message.text, re.IGNORECASE)
-        whole_word = match.group(1).strip('.,!?;:"') if match else "Чё нада?"
-        await message.answer(text=f"<blockquote>{whole_word}</blockquote>\n<b>Чё нада?</b>", parse_mode="HTML")
+        match = re.search(r"(\S*(тём[аеуылм]|темой)\S*)", message.text, re.IGNORECASE)
+        whole_word = match.group(1).strip('.,!?;:"') if match else "Тёма"
+        
+        await message.answer(text=f"<blockquote>{whole_word}</blockquote>\n<b>Нормальный?</b>", parse_mode="HTML")
     except Exception as e:
         print(f"Ошибка в tema_handler: {e}")
 
